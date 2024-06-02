@@ -21,3 +21,22 @@ def display_products():
     print(f"Name: {product_name}, Price: ${product_details['price']:.2f}")
     if 'image_url' in product_details:
       print(f"Image: {product_details['image_url']}")
+
+# Product filtering based on category (optional)
+def filter_products(category=None):
+  filtered_products = []
+  for product_name, product_details in products.items():
+    if category is None or 'category' in product_details and product_details['category'] == category:
+      filtered_products.append(product_name)
+  return filtered_products
+
+# Updated display_products function with optional category filtering
+def display_products(category=None):
+  products_to_display = filter_products(category)
+  if not products_to_display:
+    print(f"No products found in category: {category}")
+    return
+  print(f"Products in category: {category if category else 'All'}")
+  for product_name in products_to_display:
+    product_details = products[product_name]
+    print(f"Name: {product_name}, Price: ${product_details['price']:.2f}")
