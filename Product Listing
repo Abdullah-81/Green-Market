@@ -8,3 +8,16 @@ products = [
 def display_products():
   for product in products:
     print(f"Name: {product['name']}, Price: ${product['price']:.2f}")
+
+# Products now stored in a dictionary with additional attributes (optional)
+products = {
+  'T-Shirt': {'price': 19.99, 'description': 'Comfortable cotton T-Shirt'},
+  'Mug': {'price': 9.99, 'image_url': 'https://...'}
+}
+
+# Updated display_products function with optional image display
+def display_products():
+  for product_name, product_details in products.items():
+    print(f"Name: {product_name}, Price: ${product_details['price']:.2f}")
+    if 'image_url' in product_details:
+      print(f"Image: {product_details['image_url']}")
